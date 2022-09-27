@@ -486,33 +486,33 @@ jobs:
 
       - name: Echo Build Info
         run: |
-          echo issues:            "${{ steps.info.outputs.issues }}"
-          echo iscustom:          "${{ steps.info.outputs.iscustom }}"
-          echo errinfo:           "${{ steps.info.outputs.errinfo }}"
-          echo warinfo:           "${{ steps.info.outputs.warinfo }}"
+          echo issues:            '${{ steps.info.outputs.issues }}'
+          echo iscustom:          '${{ steps.info.outputs.iscustom }}'
+          echo errinfo:           '${{ steps.info.outputs.errinfo }}'
+          echo warinfo:           '${{ steps.info.outputs.warinfo }}'
 
-          echo platform:          "${{ steps.info.outputs.platform }}"
-          echo version:           "${{ steps.info.outputs.version }}"
-          echo config:            "${{ steps.info.outputs.config }}"
+          echo platform:          '${{ steps.info.outputs.platform }}'
+          echo version:           '${{ steps.info.outputs.version }}'
+          echo config:            '${{ steps.info.outputs.config }}'
 
-          echo maxdisks:          "${{ steps.info.outputs.maxdisks }}"
-          echo maxlanport:        "${{ steps.info.outputs.maxlanport }}"
-          echo internalportcfg:   "${{ steps.info.outputs.internalportcfg }}"
-          echo esataportcfg:      "${{ steps.info.outputs.esataportcfg }}"
-          echo usbportcfg:        "${{ steps.info.outputs.usbportcfg }}"
-          echo sn:                "${{ steps.info.outputs.sn }}"
-          echo mac:               "${{ steps.info.outputs.mac }}"
-          echo netif_num:         "${{ steps.info.outputs.netif_num }}"
-          echo vid:               "${{ steps.info.outputs.vid }}"
-          echo pid:               "${{ steps.info.outputs.pid }}"
-          echo diskidxmap:        "${{ steps.info.outputs.diskidxmap }}"
-          echo sataportmap:       "${{ steps.info.outputs.sataportmap }}"
-          echo sasidxmap:         "${{ steps.info.outputs.sasidxmap }}"
-          echo dtb:               "${{ steps.info.outputs.dtb }}"
-          echo ext:               "${{ steps.info.outputs.ext }}"
-          echo exp:               "${{ steps.info.outputs.exp }}"
-          echo jun:               "${{ steps.info.outputs.jun }}"
-          echo dev:               "${{ steps.info.outputs.dev }}"
+          echo maxdisks:          '${{ steps.info.outputs.maxdisks }}'
+          echo maxlanport:        '${{ steps.info.outputs.maxlanport }}'
+          echo internalportcfg:   '${{ steps.info.outputs.internalportcfg }}'
+          echo esataportcfg:      '${{ steps.info.outputs.esataportcfg }}'
+          echo usbportcfg:        '${{ steps.info.outputs.usbportcfg }}'
+          echo sn:                '${{ steps.info.outputs.sn }}'
+          echo mac:               '${{ steps.info.outputs.mac }}'
+          echo netif_num:         '${{ steps.info.outputs.netif_num }}'
+          echo vid:               '${{ steps.info.outputs.vid }}'
+          echo pid:               '${{ steps.info.outputs.pid }}'
+          echo diskidxmap:        '${{ steps.info.outputs.diskidxmap }}'
+          echo sataportmap:       '${{ steps.info.outputs.sataportmap }}'
+          echo sasidxmap:         '${{ steps.info.outputs.sasidxmap }}'
+          echo dtb:               '${{ steps.info.outputs.dtb }}'
+          echo ext:               '${{ steps.info.outputs.ext }}'
+          echo exp:               '${{ steps.info.outputs.exp }}'
+          echo jun:               '${{ steps.info.outputs.jun }}'
+          echo dev:               '${{ steps.info.outputs.dev }}'
 
       - name: Add Issues labels
         if: steps.info.outputs.issues == 'true' && steps.info.outputs.iscustom == 'true'
@@ -598,7 +598,7 @@ jobs:
                     except ModuleNotFoundError:
                         os.system('pip3 install wget')
                         import wget
-                    res = wget.download('https://raw.githubusercontent.com/pocopico/tinycore-redpill/develop/serialnumbergen.sh', out='serialnumbergen.sh')
+                    res = wget.download('https://raw.githubusercontent.com/pocopico/tinycore-redpill/stable/serialnumbergen.sh', out='serialnumbergen.sh')
                     os.system('sed -i "s|DS3622xsp|DS3622xs+|g" serialnumbergen.sh')
                     os.system('sed -i "s|echo.*\$(generateMacAddress)|echo \$(generateMacAddress)|g" serialnumbergen.sh')
                     os.system('sed -i "s|echo.*\$(generateSerial \$1)|echo \$(generateSerial \$1)|g" serialnumbergen.sh')
@@ -759,10 +759,18 @@ jobs:
 
           # 修复 pocopico 大的一个 typo
           if [ ${repo} == 'pocopico' -a ${branch} == 'develop' ]; then 
+            # cd redpill-load && git reset --hard d810a64a33fdc84287ab68e2d5919763c725ebeb && cd ..
             sed -i "s/74d513aaa3e30d8aa4f80e202d94a68a552e9c0472f8470e133ad29080556f55/346b68f662b50f47d3ee6c2bc9de6302e4b60436142c24ee88b620c7afd1ba06/g" redpill-load/config/DS920+/7.0.1-42218/config.json
             sed -i "s/e39890f4bef2e5e4eea956996b0dd92d081c6d9e7c393331131e65bbad1a17a9/f7dd1317f24ec6b9bac839e37f66b59030218c7f97c06f73f1f54ed0f892c4aa/g" redpill-load/config/DS920+/7.0.1-42218/config.json
             sed -i "s/84e5e1a238e73ffe2ccf08d51e3f9ad13385fcdcac18163678de3f6ad1447bc4/6494b4c4789ed887ddfaf0fe0e45e100cfcc4ec719b7f3ab6bcc26b05e97c829/g" redpill-load/config/DS920+/7.0.1-42218/config.json
             sed -i "s/8e6da6c3c9259d23ee5cae3c71691a75b0a281551d19cb7.1.1df469c7524e72/8e6da6c3c9259d23ee5cae3c71691a75b0a281551d19cb75041df469c7524e72/g" redpill-load/config/DS3617xs/7.1.1-42962/config.json
+            sed -i "s|v7.1.0/ramdisk-001-disable-root-pwd.patch|ramdisk-001-disable-root-pwd.patch|g" redpill-load/config/DS3617xs/7.1.0-42661/config.json
+            sed -i "s/v7.7.1/v7.1.1/g" redpill-load/config/DS3617xs/7.1.1-42951/config.json
+            sed -i "s/v7.7.1/v7.1.1/g" redpill-load/config/DS3617xs/7.1.1-42962/config.json
+            sed -i "s/ramdisk-003-post-init-script.patch/ramdisk-003-post-init-script-noatime.patch/g" redpill-load/config/DS3615xs/7.1.1-42962/config.json
+            sed -i "s/ramdisk-003-post-init-script.patch/ramdisk-003-post-init-script-noatime.patch/g" redpill-load/config/DS1621+/7.1.1-42962/config.json
+            sed -i "s/ramdisk-003-post-init-script.patch/ramdisk-003-post-init-script-noatime.patch/g" redpill-load/config/DVA1622/7.1.1-42962/config.json
+            sed -i "s/ramdisk-003-post-init-script.patch/ramdisk-003-post-init-script-noatime.patch/g" redpill-load/config/DVA3221/7.1.1-42962/config.json
           fi
 
           cp user_config.json redpill-load/user_config.json
@@ -949,7 +957,9 @@ jobs:
             您自定义的 Redpill 已构建完成. 请前往下面的 URL 下载.  
             > ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  
             ----  
-            PS: 在Issues下评论 "transfer" 附件转快传 🚲->🏍. (请勿重复发, 操作时间 ≈ 成功个数 X 3分钟).  
+            PS:  
+            在Issues下评论 "transfer" 附件转快传 🚲->🏍. (请勿重复发, 操作时间 ≈ 成功个数 X 3分钟). 
+            在Issues下评论 "delete builds" 即可删该Issues的所有历史编译记录.
             >  
             ----  
           emoji: hooray
@@ -974,6 +984,10 @@ jobs:
             您自定义的 Redpill 构建失败. 请前往下面的 URL 查看详细信息对body进行修改并请重新触发编译(Close & Reopen).  
             > ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  
             ----
+            PS:  
+            在Issues下评论 "delete builds" 即可删该Issues的所有历史编译记录.
+            >  
+            ----  
           emoji: confused
 
       - name: Warning Download comment

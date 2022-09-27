@@ -15,7 +15,8 @@
 > 托管于 GitHub 服务器, 只要 GitHub 不宕机, 它就不受影响(Private 项目每月有 2000 次的限制, Public 项目无限制).
 
 ## 链接
-***请使用 Chrome / Edge / Safari 浏览器***  
+***如果没有魔法，请参考 https://github.com/wjz304/hosts 设置hosts***  
+***请使用 Chromium 内核浏览器 (Chrome / Edge / 360极速 ...)***  
 [【👉快速创建】](https://wjz304.github.io/Redpill_CustomBuild/Issues.html)  
 [【👉快速创建】(dev)](https://wjz304.github.io/Redpill_CustomBuild/Issues.html?dev=1)  
 `普通模式默认使用pocopico的驱动库, dev模式默认使用我fork的驱动库(如果报 Checksum 错, 请尝试使用(dev)模式), `  
@@ -69,7 +70,7 @@ jun              | ×    |"0"             | 仅7.0.1-42218 版本可以选择jun
 2. 构建失败 后请调整参数重新创建Issues发起重新构建, 或者修改body后 Close Issue + Reopen 重新触发.（触发编译：open, reopen）. 
 3. 再次构建, 直接 reopen 会再次触发构建. 
 4. 每日构建, 打上'schedule' [【👉标签说明】](https://github.com/wjz304/Redpill_CustomBuild/blob/main/guide/Issues.md#issues-%E6%AF%8F%E6%97%A5%E5%BE%AA%E7%8E%AF%E6%9E%84%E5%BB%BA%E6%95%99%E7%A8%8B)标签 将会每日构建(通过Reopen的方式, 因此如果构建失败Issues没有Closed 将终止).  
-5. 驱动的选择请参考[【👉驱动列表】](https://xpenology.com/forum/topic/4980-gt-hardware-supported-list-for-dsm-52-lt/).     
+5. 驱动的选择请参考[【👉驱动列表】](./drivers.md).     
 6. 根据github官方说明所有的编译结果保留90天，周知.
 7. 如果没有魔法, 附件下载不下来, 请在 Issue 中回复 'transfer' 使用快传, 或者参考 https://github.com/wjz304/hosts 设置 hosts.
 8. [【👉问题反馈】](https://github.com/wjz304/Redpill_CustomBuild/issues/807)  交流群 QQ群: [21609194](https://qm.qq.com/cgi-bin/qm/qr?k=8AU8VJ82OR2HB_77g3vsjGKA-rm-p67B&jump_from=webapi)  TG: [https://t.me/Redpill_CustomBuild](https://t.me/Redpill_CustomBuild)  
@@ -77,7 +78,9 @@ jun              | ×    |"0"             | 仅7.0.1-42218 版本可以选择jun
 9. fork 本项目 Issues 和 Action 使用没有问题的.  
   但是快速创建的WEB页面由于 涉及 guthub 的 pages, 且含有CDN加速, 存在一些硬编码, 如要使用, 需要开通pages后修改创建issues的指向方可使用.  
   (docs/Issues.html 文件中搜索 `var repo = "wjz304/Redpill_CustomBuild";` 替换为你的库.)  
-10. Web页 Title 后面的红色标签是可以点击的哦!(***PS：只有读到这里的人才会知道.***)  
+10. 在Issues下评论 "transfer" 附件转快传 🚲->🏍. (请勿重复发, 转换操作时间 ≈ 该Issue编译成功次数 X 3分钟).
+11. 在Issues下评论 "delete builds" 即可删该Issues的所有历史编译记录.
+12. Web页 Title 后面的红色标签是可以点击的哦!(***PS：只有读到这里的人才会知道.***)  
 
 ## 举例
 * 普通参数示例:
